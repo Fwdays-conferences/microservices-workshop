@@ -2,9 +2,13 @@ package fwdays.notification.service;
 
 import fwdays.notification.domain.Notification;
 import fwdays.notification.persistence.NotificationRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class NotificationService {
-	private NotificationRepository notificationRepository;
+	private final NotificationRepository notificationRepository;
 
 	public void sendNotification(Notification notification) {
 		System.out.println("Sending notification ... " + notification.toString());

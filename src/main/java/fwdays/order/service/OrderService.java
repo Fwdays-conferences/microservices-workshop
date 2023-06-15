@@ -8,20 +8,24 @@ import fwdays.order.domain.OrderItem;
 import fwdays.order.persistence.CustomerRepository;
 import fwdays.order.persistence.OrderRepository;
 import fwdays.payment.service.PaymentService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class OrderService {
 
-	private OrderRepository orderRepository;
+	private final OrderRepository orderRepository;
 
-	private BookRepository bookRepository;
+	private final BookRepository bookRepository;
 
-	private CustomerRepository customerRepository;
+	private final CustomerRepository customerRepository;
 
-	private NotificationService notificationService;
+	private final NotificationService notificationService;
 
-	private PaymentService paymentService;
+	private final PaymentService paymentService;
 
 	public void complete(int orderId) {
 		orderRepository.findById(orderId).ifPresent(order -> {

@@ -6,15 +6,19 @@ import fwdays.order.domain.Order;
 import fwdays.order.persistence.OrderRepository;
 import fwdays.payment.domain.Payment;
 import fwdays.payment.persistence.PaymentRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class PaymentService {
-	private OrderRepository orderRepository;
+	private final OrderRepository orderRepository;
 
-	private PaymentGateway paymentGateway;
+	private final PaymentGateway paymentGateway;
 
-	private NotificationService notificationService;
+	private final NotificationService notificationService;
 
-	private PaymentRepository paymentRepository;
+	private final PaymentRepository paymentRepository;
 
 	public void pay(Order order) {
 		Payment payment = paymentGateway.charge(order);

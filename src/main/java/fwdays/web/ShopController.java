@@ -8,20 +8,27 @@ import fwdays.order.domain.Customer;
 import fwdays.order.domain.Order;
 import fwdays.order.persistence.CustomerRepository;
 import fwdays.order.service.OrderService;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping
 public class ShopController {
 
 	private String libraryName = "FwDays Shop";
 
+	@Autowired
 	private BookRepository bookRepository;
 
+	@Autowired
 	private CustomerRepository customerRepository;
 
+	@Autowired
 	private ManagerRepository managerRepository;
 
+	@Autowired
 	private OrderService orderService;
 
 	@GetMapping("library")
@@ -29,30 +36,36 @@ public class ShopController {
 		return libraryName;
 	}
 
+	@GetMapping("books")
 	public List<Book> getBooks() {
 		return bookRepository.findAll();
 	}
 
-	public Book getBook(int id) {
+	@GetMapping("books/{id}")
+	public Book getBook(@PathVariable int id) {
 		return bookRepository.findById(id).orElseThrow();
 	}
 
-	public void saveBook(Book book) {
-		bookRepository.save(book);
+	@PostMapping(path = "books")
+	public Book saveBook(@RequestBody Book book) {
+		return bookRepository.save(book);
 	}
 
 	public void updateBook(Book book) {
 		bookRepository.save(book);
 	}
 
-	public Order createOrder(int bookId, int number, int customerId) {
+	@PostMapping("orders/{bookId}/{number}/{customerId}")
+	public Order createOrder(@PathVariable int bookId, @PathVariable int number, @PathVariable int customerId) {
 		return orderService.createOrder(bookId, number, customerId);
 	}
 
-	public void saveCustomer(Customer customer) {
-		customerRepository.save(customer);
+	@PostMapping("customers")
+	public Customer saveCustomer(@RequestBody Customer customer) {
+		return customerRepository.save(customer);
 	}
 
+	@GetMapping
 	public List<Customer> findCustomers() {
 		return customerRepository.findAll();
 	}

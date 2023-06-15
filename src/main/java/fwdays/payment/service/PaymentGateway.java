@@ -2,7 +2,9 @@ package fwdays.payment.service;
 
 import fwdays.order.domain.Order;
 import fwdays.payment.domain.Payment;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PaymentGateway {
 
 	public Payment charge(Order order) {
