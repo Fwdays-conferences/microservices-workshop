@@ -24,7 +24,7 @@ public class Person extends BaseEntity {
 
 	private String biography;
 
-	@OneToMany
+	@OneToMany(mappedBy = "author")
 	private List<Book> books;
 
 	private LocalDate birthDate;

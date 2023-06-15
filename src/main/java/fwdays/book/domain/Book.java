@@ -1,10 +1,7 @@
 package fwdays.book.domain;
 
 import fwdays.domain.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +21,6 @@ public class Book extends BaseEntity {
 
 	private int amount;
 
-	@OneToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Person author;
 }

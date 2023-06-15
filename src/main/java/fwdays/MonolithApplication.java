@@ -5,9 +5,11 @@ import fwdays.book.persistence.BookRepository;
 import fwdays.order.domain.Customer;
 import fwdays.order.persistence.CustomerRepository;
 import jakarta.annotation.PostConstruct;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 //@EnableJpaRepositories("fwdays.repository")
@@ -21,6 +23,11 @@ public class MonolithApplication {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Bean
+    ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
     @PostConstruct
     public void setup() {

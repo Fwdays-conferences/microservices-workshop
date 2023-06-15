@@ -2,9 +2,9 @@ package fwdays.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import fwdays.book.domain.Book;
-import fwdays.order.domain.Customer;
+import fwdays.book.web.dto.BookDTO;
 import fwdays.order.domain.Order;
+import fwdays.order.web.dto.CustomerDTO;
 import fwdays.payment.domain.PaymentProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,7 @@ public class ShopControllerTest {
 	@Test
 	void createAndCompleteOrder_success() throws Exception {
 		// Create book
-		Book book = new Book();
+		BookDTO book = new BookDTO();
 		book.setName("Microservice development");
 
 		ResultActions actions = mockMvc.perform(
@@ -47,23 +47,24 @@ public class ShopControllerTest {
 		actions.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
 		MvcResult bookResult = actions.andReturn();
 		String body = bookResult.getResponse().getContentAsString();
-		book = MAPPER.readValue(body, Book.class);
+		book = MAPPER.readValue(body, BookDTO.class);
 
 		// Create customer
-		Customer customer = new Customer();
+		CustomerDTO customer = new CustomerDTO();
 		customer.setEmail("customer@gmail.com");
 		customer.setName("John Stones");
 		PaymentProvider provider = new PaymentProvider();
 		provider.setName("Paypal");
 		provider.setCommission(10);
-		customer.setProvider(provider);
+		//FIXME use valid provider
+		customer.setProviderId(0);
 
 		actions = mockMvc.perform(
 				post("/customers").content(MAPPER.writeValueAsBytes(customer)).contentType(MediaType.APPLICATION_JSON));
 		actions.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
 		MvcResult customerResult = actions.andReturn();
 		String responseBody = customerResult.getResponse().getContentAsString();
-		customer = MAPPER.readValue(responseBody, Customer.class);
+		customer = MAPPER.readValue(responseBody, CustomerDTO.class);
 
 		// Create order
 		actions = mockMvc.perform(post("/orders/{bookId}/1/{customerId}", book.getId(), customer.getId()));
