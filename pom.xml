@@ -5,6 +5,11 @@
     <groupId>fwdays</groupId>
     <artifactId>monolith</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>notification-client</module>
+        <module>notification-service</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
