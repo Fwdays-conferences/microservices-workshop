@@ -7,6 +7,7 @@ services:
       dockerfile: src/main/resources/library.dockerfile
     environment:
       NOTIFICATION_SERVICE_URL: http://notification:8080
+      ENABLE_LEGACY: false
     ports:
       - "8080:8080"
     networks:

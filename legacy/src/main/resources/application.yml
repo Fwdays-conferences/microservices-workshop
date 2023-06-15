@@ -3,7 +3,7 @@ spring:
     database: H2
     generate-ddl: true
 legacy:
-  notification: true
+  notification: "${ENABLE_LEGACY: true}"
   order: true
   book: true
   delivery: true
