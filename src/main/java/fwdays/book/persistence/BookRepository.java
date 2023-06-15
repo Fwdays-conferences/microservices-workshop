@@ -1,8 +1,7 @@
-package fwdays.repository;
+package fwdays.book.persistence;
 
+import fwdays.book.domain.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import fwdays.domain.Book;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 

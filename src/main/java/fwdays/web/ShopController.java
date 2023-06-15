@@ -1,17 +1,16 @@
 package fwdays.web;
 
-import java.util.List;
-
+import fwdays.book.domain.Book;
+import fwdays.book.persistence.BookRepository;
+import fwdays.delivery.domain.Manager;
+import fwdays.delivery.persistence.ManagerRepository;
+import fwdays.order.domain.Customer;
+import fwdays.order.domain.Order;
+import fwdays.order.persistence.CustomerRepository;
+import fwdays.order.service.OrderService;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import fwdays.domain.Book;
-import fwdays.domain.Customer;
-import fwdays.domain.Manager;
-import fwdays.domain.Order;
-import fwdays.repository.BookRepository;
-import fwdays.repository.CustomerRepository;
-import fwdays.repository.ManagerRepository;
-import fwdays.service.OrderService;
+import java.util.List;
 
 public class ShopController {
 

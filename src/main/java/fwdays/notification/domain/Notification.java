@@ -1,11 +1,12 @@
-package fwdays.domain;
+package fwdays.notification.domain;
 
-import java.time.LocalDateTime;
-
+import fwdays.domain.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter

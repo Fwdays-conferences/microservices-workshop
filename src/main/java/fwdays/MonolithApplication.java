@@ -1,15 +1,14 @@
 package fwdays;
 
+import fwdays.book.domain.Book;
+import fwdays.book.persistence.BookRepository;
+import fwdays.order.domain.Customer;
+import fwdays.order.persistence.CustomerRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import fwdays.domain.Book;
-import fwdays.domain.Customer;
-import fwdays.repository.BookRepository;
-import fwdays.repository.CustomerRepository;
-import jakarta.annotation.PostConstruct;
 
 @SpringBootApplication
 @EnableJpaRepositories("fwdays.repository")

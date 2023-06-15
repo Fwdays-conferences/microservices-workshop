@@ -1,8 +1,7 @@
-package fwdays.repository;
+package fwdays.notification.persistence;
 
+import fwdays.notification.domain.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import fwdays.domain.Notification;
 
 public interface NotificationRepository extends JpaRepository<Notification, Integer> {
 

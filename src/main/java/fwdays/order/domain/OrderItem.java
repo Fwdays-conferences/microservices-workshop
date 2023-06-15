@@ -1,5 +1,7 @@
-package fwdays.domain;
+package fwdays.order.domain;
 
+import fwdays.book.domain.Book;
+import fwdays.domain.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;

@@ -1,7 +1,7 @@
-package fwdays.service;
+package fwdays.payment.service;
 
-import fwdays.domain.Order;
-import fwdays.domain.Payment;
+import fwdays.order.domain.Order;
+import fwdays.payment.domain.Payment;
 
 public class PaymentGateway {
 

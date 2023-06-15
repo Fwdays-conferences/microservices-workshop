@@ -1,7 +1,7 @@
-package fwdays.service;
+package fwdays.notification.service;
 
-import fwdays.domain.Notification;
-import fwdays.repository.NotificationRepository;
+import fwdays.notification.domain.Notification;
+import fwdays.notification.persistence.NotificationRepository;
 
 public class NotificationService {
 	private NotificationRepository notificationRepository;

@@ -1,8 +1,7 @@
-package fwdays.repository;
+package fwdays.delivery.persistence;
 
+import fwdays.delivery.domain.Manager;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import fwdays.domain.Manager;
 
 public interface ManagerRepository extends JpaRepository<Manager, Integer> {
 

@@ -1,5 +1,7 @@
-package fwdays.domain;
+package fwdays.payment.domain;
 
+import fwdays.domain.BaseEntity;
+import fwdays.order.domain.Order;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

@@ -1,10 +1,11 @@
-package fwdays.service;
+package fwdays.payment.service;
 
-import fwdays.domain.Notification;
-import fwdays.domain.Order;
-import fwdays.domain.Payment;
-import fwdays.repository.OrderRepository;
-import fwdays.repository.PaymentRepository;
+import fwdays.notification.domain.Notification;
+import fwdays.notification.service.NotificationService;
+import fwdays.order.domain.Order;
+import fwdays.order.persistence.OrderRepository;
+import fwdays.payment.domain.Payment;
+import fwdays.payment.persistence.PaymentRepository;
 
 public class PaymentService {
 	private OrderRepository orderRepository;

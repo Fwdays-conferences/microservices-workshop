@@ -1,16 +1,17 @@
-package fwdays.service;
+package fwdays.delivery.service;
+
+import fwdays.book.domain.Book;
+import fwdays.book.persistence.BookRepository;
+import fwdays.delivery.domain.Manager;
+import fwdays.delivery.persistence.ManagerRepository;
+import fwdays.notification.domain.Notification;
+import fwdays.notification.service.NotificationService;
+import fwdays.order.domain.Order;
+import fwdays.order.domain.OrderItem;
+import fwdays.order.persistence.OrderRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import fwdays.domain.Book;
-import fwdays.domain.Manager;
-import fwdays.domain.Notification;
-import fwdays.domain.Order;
-import fwdays.domain.OrderItem;
-import fwdays.repository.BookRepository;
-import fwdays.repository.ManagerRepository;
-import fwdays.repository.OrderRepository;
 
 public class DeliveryService {
 	private OrderRepository orderRepository;

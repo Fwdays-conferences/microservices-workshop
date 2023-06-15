@@ -1,5 +1,6 @@
-package fwdays.domain;
+package fwdays.notification.domain;
 
+import fwdays.domain.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;

@@ -1,7 +1,9 @@
-package fwdays.service;
+package fwdays.order.service;
 
-import fwdays.domain.Notification;
-import fwdays.repository.OrderRepository;
+import fwdays.delivery.service.DeliveryService;
+import fwdays.notification.domain.Notification;
+import fwdays.notification.service.NotificationService;
+import fwdays.order.persistence.OrderRepository;
 
 public class SchedulerService {
 	private OrderRepository orderRepository;
@@ -15,6 +17,7 @@ public class SchedulerService {
 		startDeliveries();
 	}
 
+	//TODO check if we need it
 	private void startDeliveries() {
 		while (true) {
 			try {

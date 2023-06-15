@@ -1,8 +1,7 @@
-package fwdays.repository;
+package fwdays.payment.persistence;
 
+import fwdays.payment.domain.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import fwdays.domain.Payment;
 
 public interface PaymentRepository extends JpaRepository<Payment, Integer> {
 

@@ -1,12 +1,14 @@
-package fwdays.domain;
+package fwdays.delivery.domain;
 
-import java.util.List;
-
+import fwdays.domain.BaseEntity;
+import fwdays.order.domain.Order;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter

@@ -1,13 +1,15 @@
-package fwdays.service;
+package fwdays.order.service;
+
+import fwdays.book.persistence.BookRepository;
+import fwdays.notification.domain.Notification;
+import fwdays.notification.service.NotificationService;
+import fwdays.order.domain.Order;
+import fwdays.order.domain.OrderItem;
+import fwdays.order.persistence.CustomerRepository;
+import fwdays.order.persistence.OrderRepository;
+import fwdays.payment.service.PaymentService;
 
 import java.util.List;
-
-import fwdays.domain.Notification;
-import fwdays.domain.Order;
-import fwdays.domain.OrderItem;
-import fwdays.repository.BookRepository;
-import fwdays.repository.CustomerRepository;
-import fwdays.repository.OrderRepository;
 
 public class OrderService {
 

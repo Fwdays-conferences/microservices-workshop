@@ -1,13 +1,14 @@
-package fwdays.domain;
+package fwdays.book.domain;
 
-import java.time.LocalDate;
-import java.util.List;
-
+import fwdays.domain.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter

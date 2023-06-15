@@ -1,5 +1,8 @@
-package fwdays.domain;
+package fwdays.order.domain;
 
+import fwdays.domain.BaseEntity;
+import fwdays.payment.domain.Payment;
+import fwdays.payment.domain.PaymentProvider;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

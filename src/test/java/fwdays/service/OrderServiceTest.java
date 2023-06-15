@@ -1,11 +1,11 @@
 package fwdays.service;
 
+import fwdays.order.domain.Order;
+import fwdays.order.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-
-import fwdays.domain.Order;
 
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
 public class OrderServiceTest {
