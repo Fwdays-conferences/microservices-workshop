@@ -74,7 +74,8 @@ public class ShopController {
 		orderService.addBook(orderId, bookId, number);
 	}
 
-	public void completeOrder(int orderId) {
+	@PostMapping("orders/{orderId}")
+	public void completeOrder(@PathVariable int orderId) {
 		orderService.complete(orderId);
 	}
 
@@ -82,11 +83,13 @@ public class ShopController {
 		orderService.cancel(orderId);
 	}
 
+	@GetMapping("orders")
 	public List<Order> findOrders() {
 		return orderService.findOrders();
 	}
 
-	public Order findOrderById(int orderId) {
+	@GetMapping("orders/{orderId}")
+	public Order findOrderById(@PathVariable int orderId) {
 		return orderService.findOrderById(orderId);
 	}
 

@@ -1,5 +1,6 @@
 package fwdays.order.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fwdays.delivery.domain.Manager;
 import fwdays.domain.BaseEntity;
 import jakarta.persistence.*;
@@ -15,7 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "ORDERS")
 public class Order extends BaseEntity {
-	@OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
 	private List<OrderItem> items;
 
 	@ManyToOne
@@ -37,9 +38,10 @@ public class Order extends BaseEntity {
 	@JoinColumn(name = "manager_id")
 	private Manager deliveryManager;
 
-	public double getAmount() {
-		return items.stream().mapToDouble(item -> item.getBook().getPrice() * item.getNumber()).sum();
-	}
+    @JsonIgnore
+    public double getAmount() {
+        return items.stream().mapToDouble(item -> item.getBook().getPrice() * item.getNumber()).sum();
+    }
 
 	public void addItem(OrderItem item) {
 		if (items == null) {

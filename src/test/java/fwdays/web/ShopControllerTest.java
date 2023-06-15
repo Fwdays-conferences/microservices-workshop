@@ -5,6 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import fwdays.book.domain.Book;
 import fwdays.order.domain.Customer;
 import fwdays.order.domain.Order;
+import fwdays.payment.domain.PaymentProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,10 @@ public class ShopControllerTest {
 		Customer customer = new Customer();
 		customer.setEmail("customer@gmail.com");
 		customer.setName("John Stones");
+		PaymentProvider provider = new PaymentProvider();
+		provider.setName("Paypal");
+		provider.setCommission(10);
+		customer.setProvider(provider);
 
 		actions = mockMvc.perform(
 				post("/customers").content(MAPPER.writeValueAsBytes(customer)).contentType(MediaType.APPLICATION_JSON));
