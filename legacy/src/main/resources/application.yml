@@ -8,3 +8,6 @@ legacy:
   book: true
   delivery: true
   payment: true
+notification:
+  service:
+    url: ${NOTIFICATION_SERVICE_URL:http://localhost:8070}/notifications

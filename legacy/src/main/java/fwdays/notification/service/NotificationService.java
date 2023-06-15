@@ -6,6 +6,7 @@ import fwdays.notification.persistence.NotificationRepository;
 import fwdays.notification.web.dto.NotificationDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -21,6 +22,8 @@ public class NotificationService {
 
     private final ModelMapper modelMapper;
 
+    private final Environment env;
+
     /***
      * @see Strangler Fig pattern
      * @param notification
@@ -35,7 +38,8 @@ public class NotificationService {
 
     private void sendNonLegacy(Notification notification) {
         //FIXME use correct URL
-        restTemplate.postForEntity("", modelMapper.map(notification, NotificationDTO.class), ResponseEntity.class);
+        restTemplate.postForEntity(env.getRequiredProperty("notification.service.url"),
+                modelMapper.map(notification, NotificationDTO.class), ResponseEntity.class);
     }
 
     private void sendLegacy(Notification notification) {
