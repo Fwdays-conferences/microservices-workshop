@@ -1,5 +1,6 @@
 package fwdays.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -13,6 +14,7 @@ import lombok.Setter;
 public class Book extends BaseEntity {
 	private String name;
 
+	@Column(name = "publishingYear")
 	private int year;
 
 	private int pages;
