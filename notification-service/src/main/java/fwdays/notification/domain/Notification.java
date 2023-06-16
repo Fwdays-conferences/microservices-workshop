@@ -1,17 +1,20 @@
 package fwdays.notification.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Entity
-@Table
-public class Notification extends BaseEntity {
+@Document(collection = "notifications")
+public class Notification {
+    @Id
+    private String id;
+
     private String recipient;
 
     private String email;
@@ -20,5 +23,6 @@ public class Notification extends BaseEntity {
 
     private String text;
 
-    private LocalDateTime created = LocalDateTime.now();
+    @CreatedDate
+    private LocalDateTime created;
 }

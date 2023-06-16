@@ -96,6 +96,18 @@ services:
       - 8080:8080
     networks:
       - network1
+  mongo:
+    image: mongo:6
+    ports:
+      - 27017:27017
+    networks:
+      - network1
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8085:8081
+    networks:
+      - network1
 networks:
   network1:
     driver: bridge

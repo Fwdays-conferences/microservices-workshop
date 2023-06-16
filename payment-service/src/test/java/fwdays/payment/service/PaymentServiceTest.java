@@ -50,6 +50,7 @@ class PaymentServiceTest {
         List<Payment> payments = paymentRepository.findAll();
         assertEquals(1, payments.size());
         assertEquals(orderId, payments.get(0).getOrderId());
+        //TODO check customer balance
 
         verify(1, getRequestedFor(urlMatching("/orders/" + orderId)));
     }
