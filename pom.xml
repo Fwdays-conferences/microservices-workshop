@@ -10,6 +10,7 @@
         <module>notification-client</module>
         <module>notification-service</module>
         <module>legacy</module>
+        <module>platform</module>
     </modules>
 
     <parent>
