@@ -5,11 +5,14 @@ import java.util.UUID;
 
 public abstract class BaseOrderEvent implements IntegrationEvent {
 
-    private final int orderId;
+    private int orderId;
 
-    private final String id;
+    private String id;
 
-    private final LocalDateTime created;
+    private LocalDateTime created;
+
+    public BaseOrderEvent() {
+    }
 
     public BaseOrderEvent(int orderId) {
         this.orderId = orderId;

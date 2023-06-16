@@ -9,4 +9,7 @@ public class OrderPayedEvent extends BaseOrderEvent {
     public OrderPayedEvent(int orderId) {
         super(orderId);
     }
+
+    public OrderPayedEvent() {
+    }
 }

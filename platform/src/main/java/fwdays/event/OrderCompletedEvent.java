@@ -9,4 +9,7 @@ public class OrderCompletedEvent extends BaseOrderEvent {
     public OrderCompletedEvent(int orderId) {
         super(orderId);
     }
+
+    public OrderCompletedEvent() {
+    }
 }
