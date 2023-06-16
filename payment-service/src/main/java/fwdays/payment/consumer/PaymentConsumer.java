@@ -21,7 +21,7 @@ public class PaymentConsumer {
     void handle(@Payload IntegrationEvent event) {
         if (event instanceof OrderCompletedEvent completedEvent) {
             log.info("OrderCompletedEvent received: {}", completedEvent.getEntityId());
-
+            paymentService.pay(completedEvent.getEntityId());
         }
 
     }
