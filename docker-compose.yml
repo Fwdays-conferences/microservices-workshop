@@ -49,7 +49,7 @@ services:
       context: order-service
       dockerfile: src/main/resources/order.dockerfile
     environment:
-      KAFKA_BROKERS: kafka:29092
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
     expose:
       - 8080
     ports:
@@ -85,12 +85,16 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_OFFSETS_TOPIC_NUM_PARTITIONS: 3
+    networks:
+      - network1
   console:
     image: docker.redpanda.com/vectorized/console
     environment:
       KAFKA_BROKERS: kafka:29092
     ports:
       - 8080:8080
+    networks:
+      - network1
 networks:
   network1:
     driver: bridge
