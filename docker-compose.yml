@@ -42,6 +42,26 @@ services:
       - "8100:8080"
     networks:
       - network1
+  order:
+    build:
+      context: order-service
+      dockerfile: src/main/resources/order.dockerfile
+    expose:
+      - 8080
+    ports:
+      - "8100:8080"
+    networks:
+      - network1
+  payment:
+    build:
+      context: payment-service
+      dockerfile: src/main/resources/payment.dockerfile
+    expose:
+      - 8080
+    ports:
+      - "8100:8080"
+    networks:
+      - network1
 networks:
   network1:
     driver: bridge
