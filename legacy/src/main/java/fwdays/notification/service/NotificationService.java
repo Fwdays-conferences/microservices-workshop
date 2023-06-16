@@ -37,8 +37,7 @@ public class NotificationService {
     }
 
     private void sendNonLegacy(Notification notification) {
-        //FIXME use correct URL
-        restTemplate.postForEntity(env.getRequiredProperty("notification.service.url"),
+        restTemplate.postForEntity(env.getRequiredProperty("notification.url"),
                 modelMapper.map(notification, NotificationDTO.class), ResponseEntity.class);
     }
 

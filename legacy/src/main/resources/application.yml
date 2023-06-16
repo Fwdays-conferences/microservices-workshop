@@ -9,5 +9,12 @@ legacy:
   delivery: true
   payment: true
 notification:
-  service:
     url: ${NOTIFICATION_SERVICE_URL:http://localhost:8070}/notifications
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    env:
+      show-values: ALWAYS
