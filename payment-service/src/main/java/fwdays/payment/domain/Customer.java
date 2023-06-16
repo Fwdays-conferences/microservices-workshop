@@ -15,7 +15,7 @@ public class Customer extends BaseEntity {
 
     private double balance;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "provider_id")
     private PaymentProvider provider;
 
