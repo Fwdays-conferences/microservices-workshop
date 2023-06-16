@@ -2,6 +2,7 @@ package fwdays.order.web;
 
 import fwdays.order.domain.Order;
 import fwdays.order.service.OrderService;
+import fwdays.order.web.dto.CreateOrderDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,8 +35,9 @@ public class OrderController {
         return orderService.findOrderById(orderId);
     }
 
-    @PostMapping("{bookId}/{number}/{customerId}")
-    public Order createOrder(@PathVariable int bookId, @PathVariable int number, @PathVariable int customerId) {
-        return orderService.createOrder(bookId, number, customerId);
+    @PostMapping
+    public Order createOrder(@RequestBody CreateOrderDTO createOrderDTO) {
+        return orderService.createOrder(createOrderDTO.bookId(), createOrderDTO.number(),
+                createOrderDTO.customerId(), createOrderDTO.price());
     }
 }

@@ -17,4 +17,6 @@ public class OrderItem extends BaseEntity {
     private int bookId;
 
     private int number;
+
+    private double price;
 }

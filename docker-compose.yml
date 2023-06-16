@@ -1,17 +1,17 @@
 version: '3.9'
 
 services:
-  legacy:
-    build:
-      context: legacy
-      dockerfile: src/main/resources/library.dockerfile
-    environment:
-      NOTIFICATION_SERVICE_URL: http://notification:8080
-      ENABLE_LEGACY: false
-    ports:
-      - "8080:8080"
-    networks:
-      - network1
+#  legacy:
+  #    build:
+  #      context: legacy
+  #      dockerfile: src/main/resources/library.dockerfile
+  #    environment:
+  #      NOTIFICATION_SERVICE_URL: http://notification:8080
+  #      ENABLE_LEGACY: false
+  #    ports:
+  #      - "8080:8080"
+  #    networks:
+  #      - network1
   notification:
     build:
       context: notification-service

@@ -1,5 +1,6 @@
 package fwdays.order.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,10 +28,9 @@ public class Order extends BaseEntity {
 
     private boolean cancelled;
 
+    @JsonIgnore
     public double getAmount() {
-        //FIXME book price is not available
-        //return items.stream().mapToDouble(item -> item.getBook().getPrice() * item.getNumber()).sum();
-        return 0;
+        return items.stream().mapToDouble(item -> item.getPrice() * item.getNumber()).sum();
     }
 
     public void addItem(OrderItem item) {

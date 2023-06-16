@@ -58,9 +58,9 @@ public class OrderService {
 //		});
     }
 
-    public Order createOrder(int bookId, int number, int customerId) {
+    public Order createOrder(int bookId, int number, int customerId, double price) {
         Order order = new Order();
-        order.addItem(new OrderItem(bookId, number));
+        order.addItem(new OrderItem(bookId, number, price));
         order.setCustomer(customerRepository.findById(customerId).orElseThrow());
 
         orderRepository.save(order);
@@ -68,9 +68,9 @@ public class OrderService {
         return order;
     }
 
-    public void addBook(int orderId, int bookId, int number) {
+    public void addBook(int orderId, int bookId, int number, double price) {
         orderRepository.findById(orderId).ifPresent(order -> {
-            order.addItem(new OrderItem(bookId, number));
+            order.addItem(new OrderItem(bookId, number, price));
             orderRepository.save(order);
         });
     }
