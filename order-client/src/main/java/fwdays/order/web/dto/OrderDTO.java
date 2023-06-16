@@ -13,4 +13,6 @@ public class OrderDTO {
     private boolean payed;
 
     private boolean completed;
+
+    private double amount;
 }

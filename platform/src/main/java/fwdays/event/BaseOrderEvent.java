@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public abstract class BaseOrderEvent implements IntegrationEvent {
 
-    private int orderId;
+    private int entityId;
 
     private String id;
 
@@ -15,7 +15,7 @@ public abstract class BaseOrderEvent implements IntegrationEvent {
     }
 
     public BaseOrderEvent(int orderId) {
-        this.orderId = orderId;
+        entityId = orderId;
         id = UUID.randomUUID().toString();
         created = LocalDateTime.now();
     }
@@ -27,7 +27,7 @@ public abstract class BaseOrderEvent implements IntegrationEvent {
 
     @Override
     public int getEntityId() {
-        return orderId;
+        return entityId;
     }
 
     @Override
