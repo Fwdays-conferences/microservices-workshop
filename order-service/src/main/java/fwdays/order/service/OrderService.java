@@ -2,9 +2,14 @@ package fwdays.order.service;
 
 import fwdays.event.IntegrationEvent;
 import fwdays.event.OrderCompletedEvent;
+import fwdays.order.command.CreateOrderCommand;
+import fwdays.order.command.handler.OrderCommandHandler;
+import fwdays.order.domain.EventLog;
 import fwdays.order.domain.Order;
 import fwdays.order.domain.OrderItem;
+import fwdays.order.event.sourcing.OrderCreatedEvent;
 import fwdays.order.persistence.CustomerRepository;
+import fwdays.order.persistence.EventLogRepository;
 import fwdays.order.persistence.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -23,6 +28,10 @@ public class OrderService {
     private final CustomerRepository customerRepository;
 
     private final KafkaTemplate<Integer, IntegrationEvent> kafkaTemplate;
+
+    private final EventLogRepository eventLogRepository;
+
+    private final OrderCommandHandler orderCommandHandler;
 //
 //	private final NotificationService notificationService;
 //
@@ -66,14 +75,16 @@ public class OrderService {
 //		});
     }
 
-    public Order createOrder(int bookId, int number, int customerId, double price) {
-        Order order = new Order();
-        order.addItem(new OrderItem(bookId, number, price));
-        order.setCustomer(customerRepository.findById(customerId).orElseThrow());
+    public int createOrder(int bookId, int number, int customerId, double price) {
+        CreateOrderCommand command = new CreateOrderCommand(bookId, customerId, number, price);
+//
+//        Order order = new Order();
+//        order.addItem(new OrderItem(bookId, number, price));
+//        order.setCustomer(customerRepository.findById(customerId).orElseThrow());
+//
+//        orderRepository.save(order);
 
-        orderRepository.save(order);
-
-        return order;
+        return orderCommandHandler.handle(command);
     }
 
     public void addBook(int orderId, int bookId, int number, double price) {
@@ -88,7 +99,21 @@ public class OrderService {
     }
 
     public Order findOrderById(int orderId) {
-        return orderRepository.findById(orderId).orElseThrow();
+        //return orderRepository.findById(orderId).orElseThrow();
+        List<EventLog> logs = eventLogRepository.findByEntityIdOrderByCreatedAsc(orderId);
+        if (logs.isEmpty()) {
+            //TODO return Optional.empty()
+            return null;
+        }
+        Order order = new Order();
+        logs.stream().map(EventLog::getPayload)
+                .forEach(event -> {
+                    if (event instanceof OrderCreatedEvent createdEvent) {
+                        order.apply(createdEvent);
+                    }
+                });
+
+        return order;
     }
 
 }

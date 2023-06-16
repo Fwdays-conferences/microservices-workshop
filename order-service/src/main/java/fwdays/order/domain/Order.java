@@ -1,5 +1,6 @@
 package fwdays.order.domain;
 
+import fwdays.order.event.sourcing.OrderCreatedEvent;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,6 +37,12 @@ public class Order extends BaseEntity {
             items = new ArrayList<>();
         }
         items.add(item);
+    }
+
+    public void apply(OrderCreatedEvent event) {
+        setId(event.getOrderId());
+        addItem(new OrderItem(event.getBookId(), event.getNumber(), event.getPrice()));
+        //TODO apply customerId
     }
 
 }

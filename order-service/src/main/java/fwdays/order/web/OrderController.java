@@ -1,11 +1,11 @@
 package fwdays.order.web;
 
-import fwdays.order.domain.Order;
 import fwdays.order.service.OrderService;
 import fwdays.order.web.dto.CreateOrderDTO;
 import fwdays.order.web.dto.OrderDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,7 +41,9 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order createOrder(@RequestBody CreateOrderDTO createOrderDTO) {
+    @ResponseStatus(HttpStatus.CREATED)
+    //TODO add location header
+    public int createOrder(@RequestBody CreateOrderDTO createOrderDTO) {
         return orderService.createOrder(createOrderDTO.bookId(), createOrderDTO.number(),
                 createOrderDTO.customerId(), createOrderDTO.price());
     }
