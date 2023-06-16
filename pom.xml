@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>notification-client</module>
+        <module>order-client</module>
         <module>notification-service</module>
         <module>legacy</module>
         <module>platform</module>

@@ -3,7 +3,9 @@ package fwdays.order.web;
 import fwdays.order.domain.Order;
 import fwdays.order.service.OrderService;
 import fwdays.order.web.dto.CreateOrderDTO;
+import fwdays.order.web.dto.OrderDTO;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +16,8 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
+
+    private final ModelMapper modelMapper;
 
     @PostMapping("{orderId}")
     public void completeOrder(@PathVariable int orderId) {
@@ -26,13 +30,14 @@ public class OrderController {
     }
 
     @GetMapping
-    public List<Order> findOrders() {
-        return orderService.findOrders();
+    public List<OrderDTO> findOrders() {
+        return orderService.findOrders()
+                .stream().map(order -> modelMapper.map(order, OrderDTO.class)).toList();
     }
 
     @GetMapping("{orderId}")
-    public Order findOrderById(@PathVariable int orderId) {
-        return orderService.findOrderById(orderId);
+    public OrderDTO findOrderById(@PathVariable int orderId) {
+        return modelMapper.map(orderService.findOrderById(orderId), OrderDTO.class);
     }
 
     @PostMapping

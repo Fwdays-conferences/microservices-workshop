@@ -61,7 +61,7 @@ services:
       context: payment-service
       dockerfile: src/main/resources/payment.dockerfile
     environment:
-      KAFKA_BROKERS: "kafka:29092"
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
     expose:
       - 8080
     ports:

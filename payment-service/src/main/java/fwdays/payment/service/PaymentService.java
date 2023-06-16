@@ -1,18 +1,23 @@
 package fwdays.payment.service;
 
+import fwdays.payment.persistence.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class PaymentService {
-//    private final OrderRepository orderRepository;
+    //    private final OrderRepository orderRepository;
 //
-//    private final PaymentGateway paymentGateway;
-//
+    private final PaymentGateway paymentGateway;
+    //
 //    private final NotificationService notificationService;
 //
-//    private final PaymentRepository paymentRepository;
+    private final PaymentRepository paymentRepository;
+
+    public void pay(int orderId) {
+
+    }
 //
 //    public void pay(Order order) {
 //        Payment payment = paymentGateway.charge(order);
