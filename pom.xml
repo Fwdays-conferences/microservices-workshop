@@ -11,6 +11,10 @@
         <module>notification-service</module>
         <module>legacy</module>
         <module>platform</module>
+        <module>book-service</module>
+        <module>order-service</module>
+        <module>delivery-service</module>
+        <module>payment-service</module>
     </modules>
 
     <parent>
